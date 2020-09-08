@@ -10,12 +10,19 @@ const initialState = [
 export const GlobalContext = createContext(initialState);
 
 export const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState)
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  const addTransaction = (transaction) => {
+    dispatch({
+      type: "ADD_TRANSACTION",
+      payload: transaction
+    });
+  }
 
   return (
-    <GlobalContext.Provider value= {{
-      initialState
-
+    <GlobalContext.Provider value={{
+      state,
+      addTransaction,
     }}>
       {children}
     </GlobalContext.Provider>
