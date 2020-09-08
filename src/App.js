@@ -1,13 +1,17 @@
 import React from 'react';
-import './App.css';
+import Header from './components/Header';
+import Balance from './components/Balance';
+import Form from './components/Form';
+import History from './components/History';
 
 const App = () => {
   return (
     <div className="container">
-      <div class="app-wrapper">
-        <h1>app</h1>
-      </div>
-      
+      <Header />
+      <Balance />
+      <Form />
+      <History />
+      {/* <Menu /> */}
     </div>
   )
 }
