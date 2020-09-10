@@ -11,7 +11,7 @@ const App = () => {
       <div className="container">
         <Header />
         <Balance />
-        <Form transactionType="income"/>
+        <Form transactionType="expense"/>
         <History />
         {/* <Menu /> */}
       </div>

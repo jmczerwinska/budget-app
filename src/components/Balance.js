@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import BalanceChart from './BalanceChart';
 import { GlobalContext } from '../context/GlobalState';
 
 const Balance = () => {
@@ -13,11 +14,14 @@ const Balance = () => {
   const totalExpense = expenses
     .map(transaction => transaction.amount)
     .reduce((sum, amount) => sum += amount, 0);
+  
+  const percent = totalExpense / totalIncome * 100;
+  const balance = totalIncome - totalExpense;
 
   return (
     <div>
-      <h2>Your Balance</h2>
-  <h3>${totalIncome - totalExpense}</h3>
+      <BalanceChart percent={percent} balance={balance} />
+      
       <div>
         <h3>Income</h3>
         <p> +${totalIncome}</p>
