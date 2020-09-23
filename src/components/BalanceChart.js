@@ -1,20 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
-const BalanceChart = ({ percent, balance }) => {
-  const [offset, setOffset] = useState(0);
+const BalanceChart = ({ percent }) => {
   
-  useEffect(() => {
-    setTimeout(()=> {
-      if (offset < percent) {
-        setOffset(offset + 1)
-      }
-    }, 50)
-
-  }, [percent, offset]);
+  const [offset, setOffset] = useState(0);
+  useEffect(() => setOffset(percent), [percent]);
 
   return (
     <div>
-      <svg width="38" height="38">
+      <svg viewBox="0 0 38 38">
         <circle
           className="balance-track"
           cx="19"
@@ -33,13 +26,12 @@ const BalanceChart = ({ percent, balance }) => {
           strokeWidth="2"
           stroke="red"
           strokeLinecap= "round"
-          strokeDasharray={`${offset} ${100 - offset}`} />
-        <text x="50%" y="50%">
-            Your Balance
-          </text>
-        <text x="50%" y="50%">
-          {balance}
-          </text>
+          // strokeDasharray={`${offset} ${100 - offset}`}
+          strokeDasharray ="100"
+          strokeDashoffset={`${100 - offset}`}
+          transform="rotate(-90 19 19)" 
+          style = {{transition: "stroke-dashoffset 1s ease"}}
+          />
 
       </svg>
     </div>
